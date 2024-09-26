@@ -19,7 +19,7 @@ const lifecycle = process.env.npm_lifecycle_event
 //   path: 'https://lib.baomitu.com/axios/1.6.8/axios.min.js'
 // },
 export default defineConfig({
-  base: './',
+  base: '/douyin/',
   envDir: 'env',
   plugins: [
     // VueMacros({
