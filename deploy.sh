@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 确保在项目根目录执行此脚本
-cd "$(dirname "$0")"
+# cd "$(dirname "$0")"
 
 # 1. 构建项目
 echo "Building the project..."
@@ -20,10 +20,14 @@ ls -la ./dist
 git checkout -B gh-pages
 
 # 3. 删除旧的构建文件
-rm -rf ./*  # 清空当前目录下的所有文件
+# rm -rf ./*  # 清空当前目录下的所有文件
 
 # 4. 复制新构建的文件到 gh-pages 分支
-cp -r ./dist/* .
+cp -r ./dist/* ./dist
+
+# 删除不是dist与.git的所有文件
+find ./dist -not -name 'dist' -and -not -name '.git' -delete
+
 
 # 显示当前目录的内容
 ls -la .
@@ -44,6 +48,7 @@ git commit -m "chore: Deploy to GitHub Pages"
 git push origin gh-pages
 
 # 8. 切回主分支
-git checkout main
+git checkout master
 
 echo "Deployment complete!"
+
